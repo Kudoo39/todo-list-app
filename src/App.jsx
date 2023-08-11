@@ -18,6 +18,18 @@ const App = () => {
       ];
     });
     setCurrentId(currentId + 1);
+    setNewItem("");
+  };
+
+  const toggleTodo = (id, completed) => {
+    setTodos((currentTodos) => {
+      return currentTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed };
+        }
+        return todo;
+      });
+    });
   };
 
   console.log(todos);
@@ -41,9 +53,13 @@ const App = () => {
       <ul className="list">
         {todos.map((todo) => {
           return (
-            <li key="todo.id">
+            <li key={todo.id}>
               <label htmlFor="">
-                <input checked={todo.completed} type="checkbox" />
+                <input
+                  checked={todo.completed}
+                  type="checkbox"
+                  onChange={(e) => toggleTodo(todo.id, e.target.checked)}
+                />
                 {todo.title}
               </label>
               <TbTrashOff className="btn remove" />
