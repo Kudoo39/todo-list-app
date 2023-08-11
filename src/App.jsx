@@ -6,13 +6,18 @@ import { TbTrashOff } from "react-icons/tb";
 const App = () => {
   const [newItem, setNewItem] = useState("");
   const [todos, setTodos] = useState([]);
+  const [currentId, setCurrentId] = useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setTodos((currentTodos) => {
-      return [...currentTodos, { title: newItem, completed: false }];
+      return [
+        ...currentTodos,
+        { id: currentId, title: newItem, completed: false },
+      ];
     });
+    setCurrentId(currentId + 1);
   };
 
   console.log(todos);
@@ -35,13 +40,15 @@ const App = () => {
       <h2>Todo List</h2>
       <ul className="list">
         {todos.map((todo) => {
-          <li>
-            <label htmlFor="">
-              <input checked={todo.completed} type="checkbox" />
-              {todo.title}
+          return (
+            <li key="todo.id">
+              <label htmlFor="">
+                <input checked={todo.completed} type="checkbox" />
+                {todo.title}
+              </label>
               <TbTrashOff className="btn remove" />
-            </label>
-          </li>;
+            </li>
+          );
         })}
       </ul>
     </div>
