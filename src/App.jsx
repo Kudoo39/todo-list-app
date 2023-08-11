@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <form className="form">
+      <div className="form-row">
+        <label htmlFor="item">New Item</label>
+        <input type="text" id="item" />
+      </div>
+      <button className="btn">Add</button>
+    </form>
+  );
+};
 
-export default App
+export default App;
