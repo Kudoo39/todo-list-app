@@ -32,7 +32,9 @@ const App = () => {
     });
   };
 
-  console.log(todos);
+  const deleteToto = (id) => {
+    setTodos(todos.filter((e) => e.id !== id));
+  };
 
   return (
     <div className="container">
@@ -62,7 +64,7 @@ const App = () => {
                 />
                 {todo.title}
               </label>
-              <TbTrashOff className="btn remove" />
+              <TbTrashOff onClick={() => deleteToto(todo.id)} className="btn remove" />
             </li>
           );
         })}
