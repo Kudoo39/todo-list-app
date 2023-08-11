@@ -3,11 +3,10 @@ import "./App.css";
 
 const App = () => {
   return (
-    <>
-      <form className="container">
+    <div className="container">
+      <form className="form">
         <div className="form-row">
-          <label htmlFor="item">New Item</label>
-          <input type="text" id="item" />
+          <input type="text" id="item" placeholder="Add a new todo..." />
         </div>
         <button className="btn">Add</button>
       </form>
@@ -26,7 +25,7 @@ const App = () => {
           <button className="btn">Delete</button>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 

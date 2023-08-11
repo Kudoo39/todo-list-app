@@ -1,5 +1,15 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8ec5fc;
+  padding: 10px;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+
+.container {
+  background: #fff;
+  width: 100%;
+  margin: 150px auto;
+  padding: 30px
+}
