@@ -30,11 +30,11 @@ const App = () => {
   };
 
   const filteredTodos = todos.filter((todo) => {
-    return todoFilter == "all"
-      ? todos
-      : todoFilter == "yes"
+    return todoFilter === "yes"
       ? todo.completed
-      : !todo.completed;
+      : todoFilter === "no"
+      ? !todo.completed
+      : todos;
   });
 
   return (
@@ -48,7 +48,7 @@ const App = () => {
 
       <h2>Todo List</h2>
       <TodoFilter TodoFilter={(a) => setTodoFilter(a)} />
-      {todos.length == 0 && <h4>Nothing to do, enjoy your day!</h4>}
+      {todos.length === 0 && <h4>Nothing to do, enjoy your day!</h4>}
       <TodoList
         todos={filteredTodos}
         toggleTodo={toggleTodo}
