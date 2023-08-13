@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const local = localStorage.getItem("Items");
+    return local !== null ? JSON.parse(local) : [];
+  });
   const [currentId, setCurrentId] = useState(1);
+
+  useEffect(() => {
+    localStorage.setItem("Items", JSON.stringify(todos));
+  }, [todos]);
 
   const toggleTodo = (id, completed) => {
     setTodos((currentTodos) => {
