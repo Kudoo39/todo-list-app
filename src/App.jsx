@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import TodoFilter from "./components/TodoFilter";
 
 const App = () => {
+  const [todoFilter, setTodoFilter] = useState("");
+
   const [todos, setTodos] = useState(() => {
     const local = localStorage.getItem("Items");
     return local !== null ? JSON.parse(local) : [];
@@ -26,6 +29,14 @@ const App = () => {
     setTodos(todos.filter((e) => e.id !== id));
   };
 
+  const filteredTodos = todos.filter((todo) => {
+    return todoFilter == "all"
+      ? true
+      : todoFilter == "yes"
+      ? todo.completed
+      : !todo.completed;
+  });
+
   return (
     <div className="container">
       <h2>Todo App</h2>
@@ -34,9 +45,15 @@ const App = () => {
         currentId={currentId}
         setCurrentId={setCurrentId}
       />
+
       <h2>Todo List</h2>
+      <TodoFilter TodoFilter={(a) => setTodoFilter(a)} />
       {todos.length == 0 && <h4>Nothing to do, enjoy your day!</h4>}
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <TodoList
+        todos={filteredTodos}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+      />
     </div>
   );
 };
