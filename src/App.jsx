@@ -31,7 +31,7 @@ const App = () => {
 
   const filteredTodos = todos.filter((todo) => {
     return todoFilter == "all"
-      ? true
+      ? todos
       : todoFilter == "yes"
       ? todo.completed
       : !todo.completed;
