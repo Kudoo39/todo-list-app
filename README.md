@@ -2,7 +2,7 @@
 
 A simple app that helps users add new tasks to the list. Using ReactJS.
 
-- [Live Demo](https://kudoo39.github.io/react-portfolio/)
+- [Live Demo](https://kudoo39.github.io/todo-list-app/)
 
 ## Technologies Used
 
